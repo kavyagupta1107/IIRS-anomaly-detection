@@ -12,7 +12,7 @@ import matplotlib.pyplot as plt
 from numpy.random import seed
 from tensorflow import set_random_seed
 
-
+#read csv file as panda series
 df = pd.read_csv('index_data2.csv')
 df = df[['date_time', 'value']]
 df.info()
@@ -28,6 +28,7 @@ scaler = StandardScaler()
 np_scaled = scaler.fit_transform(data)
 data = pd.DataFrame(np_scaled)
 # train isolation forest
+#specify outliers frac to be the fraction of  anomalies
 outliers_fraction=0.2
 model =  IsolationForest(contamination=outliers_fraction)
 model.fit(data) 
